@@ -2,20 +2,20 @@
 //  ContentView.swift
 //  RoddiMobileMusic
 //
-//  Created by user217235 on 3/29/22.
+//  Created by Simbarashe Dombodzvuku on 3/29/22.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct MusicStackView: View {
     var body: some View {
         Text("Hello, world!")
             .padding()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MusicStackView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MusicStackView()
     }
 }
