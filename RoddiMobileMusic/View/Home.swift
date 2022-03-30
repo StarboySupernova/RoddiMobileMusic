@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct Home: View {
+    //Animation properties
+    @State var expandCards = false //test these with private var
+    @State var currentCard: Album?
+    @State var showDetail = false
+    
     var body: some View {
         VStack {
             HStack {
@@ -72,17 +77,41 @@ struct Home: View {
     
     //Stack player view
     @ViewBuilder func stackPlayerView (size: CGSize) -> some View {
+        let offsetHeight = size.height * 0.1
+        
         ZStack {
             ForEach(stackAlbums.reversed()) { album in
-                let imageSize = size.width
+                
+                let index = getIndex(album: album) //used to help calculate unique values for each album card imagesize, and unique tapped & untapped offset values in the y-plane
+                let imageSize = (size.width - CGFloat(index) * 20)
+                
                 
                 Image(album.albumImage)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: imageSize/2, height: imageSize/2)
                     .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    .offset(y: CGFloat(index) * -20)
+                    .offset(y: expandCards ? -CGFloat(index) * offsetHeight : 0)
+                    .onTapGesture {
+                        if expandCards {
+                            // selecting currentCard
+                        } else {
+                            withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7)) {
+                                expandCards = true
+                            }
+                        }
+                    }
             }
         }
+        .offset(y: expandCards ? offsetHeight : 0)
+    }
+    
+    //Array Index
+    func getIndex(album: Album) -> Int {
+        return stackAlbums.firstIndex { currentAlbum in
+            return album.id == currentAlbum.id
+        } ?? 0
     }
 }
 
