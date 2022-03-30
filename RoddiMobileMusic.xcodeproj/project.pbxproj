@@ -7,18 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8082E0E527F3C10600C54E4F /* ExtensionOnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082E0E427F3C10600C54E4F /* ExtensionOnView.swift */; };
+		8082E0E727F3C1D700C54E4F /* ExtensionOnColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082E0E627F3C1D700C54E4F /* ExtensionOnColor.swift */; };
+		8082E0E927F3D13D00C54E4F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082E0E827F3D13D00C54E4F /* Home.swift */; };
 		80D49BE027F28D75000B9191 /* RoddiMobileMusicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D49BDF27F28D75000B9191 /* RoddiMobileMusicApp.swift */; };
 		80D49BE227F28D75000B9191 /* MusicStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D49BE127F28D75000B9191 /* MusicStackView.swift */; };
 		80D49BE427F28D76000B9191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80D49BE327F28D76000B9191 /* Assets.xcassets */; };
 		80D49BE727F28D76000B9191 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80D49BE627F28D76000B9191 /* Preview Assets.xcassets */; };
+		80D49BF027F2924F000B9191 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D49BEF27F2924F000B9191 /* Album.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8082E0E427F3C10600C54E4F /* ExtensionOnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOnView.swift; sourceTree = "<group>"; };
+		8082E0E627F3C1D700C54E4F /* ExtensionOnColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOnColor.swift; sourceTree = "<group>"; };
+		8082E0E827F3D13D00C54E4F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		80D49BDC27F28D75000B9191 /* RoddiMobileMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoddiMobileMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80D49BDF27F28D75000B9191 /* RoddiMobileMusicApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoddiMobileMusicApp.swift; sourceTree = "<group>"; };
 		80D49BE127F28D75000B9191 /* MusicStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicStackView.swift; sourceTree = "<group>"; };
 		80D49BE327F28D76000B9191 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80D49BE627F28D76000B9191 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		80D49BEF27F2924F000B9191 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +60,8 @@
 			isa = PBXGroup;
 			children = (
 				80D49BDF27F28D75000B9191 /* RoddiMobileMusicApp.swift */,
-				80D49BE127F28D75000B9191 /* MusicStackView.swift */,
+				80D49BEE27F29123000B9191 /* View */,
+				80D49BED27F290CA000B9191 /* Model */,
 				80D49BE327F28D76000B9191 /* Assets.xcassets */,
 				80D49BE527F28D76000B9191 /* Preview Content */,
 			);
@@ -65,6 +74,25 @@
 				80D49BE627F28D76000B9191 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		80D49BED27F290CA000B9191 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				80D49BEF27F2924F000B9191 /* Album.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		80D49BEE27F29123000B9191 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				80D49BE127F28D75000B9191 /* MusicStackView.swift */,
+				8082E0E427F3C10600C54E4F /* ExtensionOnView.swift */,
+				8082E0E627F3C1D700C54E4F /* ExtensionOnColor.swift */,
+				8082E0E827F3D13D00C54E4F /* Home.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +166,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				80D49BE227F28D75000B9191 /* MusicStackView.swift in Sources */,
+				8082E0E527F3C10600C54E4F /* ExtensionOnView.swift in Sources */,
 				80D49BE027F28D75000B9191 /* RoddiMobileMusicApp.swift in Sources */,
+				80D49BF027F2924F000B9191 /* Album.swift in Sources */,
+				8082E0E927F3D13D00C54E4F /* Home.swift in Sources */,
+				8082E0E727F3C1D700C54E4F /* ExtensionOnColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
