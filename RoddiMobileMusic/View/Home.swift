@@ -41,7 +41,7 @@ struct Home: View {
                     Image(systemName: "magnifyingglass")
                         .font(.title2)
                 }
-
+                
             }
             .overlay {
                 Text("My Playlist")
@@ -85,13 +85,14 @@ struct Home: View {
         }
         .overlay {
             //Detail View
-            ZStack {
-                if let currentCard = currentCard, showDetail {
+            if let currentCard = currentCard, showDetail {
+                ZStack {
                     Color.offWhite
                         .ignoresSafeArea()
                     
                     detailView(currentCard: currentCard)
                 }
+                
             }
         }
     }
@@ -162,12 +163,15 @@ struct Home: View {
             Button {
                 rotateCards = true
                 withAnimation {
-                    animateDetailView = false
+                    showDetailContent = false
                 }
-                withAnimation(.interactiveSpring(response: 0.7, dampingFraction: 0.8, blendDuration: 0.8)) {
-                    self.currentIndex = -1
-                    self.currentCard = nil
-                    showDetail = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                    withAnimation(.interactiveSpring(response: 0.7, dampingFraction: 0.8, blendDuration: 0.8)) {
+                        self.currentIndex = -1
+                        self.currentCard = nil
+                        showDetail = false
+                        animateDetailView = false
+                    }
                 }
             } label: {
                 
@@ -190,12 +194,116 @@ struct Home: View {
                         .rotation3DEffect(.init(degrees: animateDetailView && rotateCards ? 180 : 0), axis: (x: 1, y: 0, z: 0), anchor: .center, anchorZ: 1, perspective: 1)
                         .matchedGeometryEffect(id: currentCard.id, in: animation)
                         .padding(.top, 50)
+                    
+                    VStack(spacing: 20){
+                        Text(currentCard.albumName)
+                            .font(.title3)
+                            .bold()
+                            .padding(.top, 10)
+                        
+                        HStack(spacing: 50){
+                            Button {
+                                
+                            } label: {
+                                Image(systemName: "shuffle")
+                                    .font(.title2)
+                            }
+                            
+                            Button {
+                                
+                            } label: {
+                                Image(systemName: "pause.fill")
+                                    .font(.title3)
+                                    .frame(width: 55, height: 55)
+                                    .background {
+                                        Circle()
+                                            .fill(Color.BG)
+                                    }
+                                    .foregroundColor(.white)
+                            }
+                            
+                            Button {
+                                
+                            } label: {
+                                Image(systemName: "arrow.2.squarepath")
+                                    .font(.title2)
+                            }
+                            
+                        }
+                        .foregroundColor(.black)
+                        .padding(.top, 10)
+                        
+                        Text("Upcoming Song")
+                            .font(.title3)
+                            .bold()
+                            .padding(.top, 20)
+                            .padding(.bottom, 10)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        ForEach(albums) { album in
+                            AlbumCardView(album: album)
+                        }
+                    }
+                    .padding(.horizontal)
+                    .offset(y: showDetailContent ? 0 : 300)
+                    .opacity(showDetailContent ? 1 : 0)
                 }
                 .frame(maxWidth: .infinity)
             }
-
+            
         }
         .frame(maxHeight: .infinity, alignment: .top)
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                withAnimation(.easeInOut){
+                    showDetailContent = true
+                }
+            }
+        }
+    }
+    
+    //Album Card View
+    @ViewBuilder func AlbumCardView(album: Album) -> some View {
+        HStack(spacing: 12){
+            Image(album.albumImage)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 55, height: 55)
+                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+            
+            VStack(alignment: .leading, spacing: 8) {
+                Text(album.albumName)
+                    .fontWeight(.semibold)
+                
+                Label {
+                    Text("144k")
+                } icon: {
+                    Image(systemName: "beats.headphones")
+                }
+                .font(.caption)
+                .foregroundColor(.gray)
+                
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            
+            Button {
+                
+            } label: {
+                Image(systemName: "ellipsis")
+                    .font(.title3)
+                    .foregroundColor(.gray)
+            }
+            
+            Button {
+                
+            } label: {
+                Image(systemName: album.isLiked ? "suit.heart.fill" : "suit.heart")
+                    .font(.title3)
+                    .foregroundColor(album.isLiked ? .red : .gray)
+            }
+            
+            
+        }
     }
     
     //Array Index
