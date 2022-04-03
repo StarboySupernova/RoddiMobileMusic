@@ -14,6 +14,7 @@
 		8082E0E927F3D13D00C54E4F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082E0E827F3D13D00C54E4F /* Home.swift */; };
 		8097351227F689A200115C16 /* ExtensionOnLinearGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097351127F689A200115C16 /* ExtensionOnLinearGradient.swift */; };
 		80AC5EEB27F9032D005765E0 /* OffsetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC5EEA27F9032D005765E0 /* OffsetModifier.swift */; };
+		80AC5EED27F92B89005765E0 /* TabHeadings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC5EEC27F92B89005765E0 /* TabHeadings.swift */; };
 		80D49BE027F28D75000B9191 /* RoddiMobileMusicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D49BDF27F28D75000B9191 /* RoddiMobileMusicApp.swift */; };
 		80D49BE227F28D75000B9191 /* MusicStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D49BE127F28D75000B9191 /* MusicStackView.swift */; };
 		80D49BE427F28D76000B9191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80D49BE327F28D76000B9191 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		8082E0E827F3D13D00C54E4F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		8097351127F689A200115C16 /* ExtensionOnLinearGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOnLinearGradient.swift; sourceTree = "<group>"; };
 		80AC5EEA27F9032D005765E0 /* OffsetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetModifier.swift; sourceTree = "<group>"; };
+		80AC5EEC27F92B89005765E0 /* TabHeadings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabHeadings.swift; sourceTree = "<group>"; };
 		80D49BDC27F28D75000B9191 /* RoddiMobileMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoddiMobileMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80D49BDF27F28D75000B9191 /* RoddiMobileMusicApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoddiMobileMusicApp.swift; sourceTree = "<group>"; };
 		80D49BE127F28D75000B9191 /* MusicStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicStackView.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				80D49BEF27F2924F000B9191 /* Album.swift */,
+				80AC5EEC27F92B89005765E0 /* TabHeadings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80AC5EED27F92B89005765E0 /* TabHeadings.swift in Sources */,
 				80D49BE227F28D75000B9191 /* MusicStackView.swift in Sources */,
 				8082E0E527F3C10600C54E4F /* ExtensionOnView.swift in Sources */,
 				80D49BE027F28D75000B9191 /* RoddiMobileMusicApp.swift in Sources */,

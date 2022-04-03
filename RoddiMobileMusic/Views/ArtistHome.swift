@@ -175,40 +175,46 @@ struct ArtistHome: View {
     @ViewBuilder
     func PinnedHeaderView() -> some View {
         
-        let tabHeadings: [String] = ["Popular", "Albums", "Songs", "Fans Also Like", "About Artist"]
+        let headers = TabHeadings.allCases
         
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 25) {
-                ForEach(tabHeadings, id: \.self) { tab in
-                    VStack(spacing: 12) {
-                        Text(tab)
-                            .fontWeight(.semibold)
-                            .foregroundColor(currentTab == tab ? .white : .gray)
-                        
-                        ZStack {
-                            if currentTab == tab {
-                                RoundedRectangle(cornerRadius: 4, style: .continuous)
-                                    .fill(.white)
-                                    .matchedGeometryEffect(id: "TAB", in: animation)
-                            } else {
-                                RoundedRectangle(cornerRadius: 4, style: .continuous)
-                                    .fill(.clear)
+            ScrollViewReader { value in
+                
+                HStack(spacing: 25) {
+                    
+                    ForEach(headers, id: \.self) { tabHeader in
+                        VStack(spacing: 12) {
+                            Text(tabHeader.rawValue)
+                                .fontWeight(.semibold)
+                                .foregroundColor(currentTab == tabHeader.rawValue ? .white : .gray)
+                            
+                            
+                            ZStack {
+                                if currentTab == tabHeader.rawValue {
+                                    RoundedRectangle(cornerRadius: 4, style: .continuous)
+                                        .fill(.white)
+                                        .matchedGeometryEffect(id: "TAB", in: animation)
+                                } else {
+                                    RoundedRectangle(cornerRadius: 4, style: .continuous)
+                                        .fill(.clear)
+                                }
                             }
+                            .padding(.horizontal, 8)
+                            .frame(height: 4)
                         }
-                        .padding(.horizontal, 8)
-                        .frame(height: 4)
-                    }
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        withAnimation(.easeInOut) {
-                            currentTab = tab
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            withAnimation(.easeInOut) {
+                                currentTab = tabHeader.rawValue
+                                value.scrollTo(tabHeader, anchor: .center)
+                            }
                         }
                     }
                 }
+                .padding(.horizontal)
+                .padding(.top, 25)
+                .padding(.bottom, 5)
             }
-            .padding(.horizontal)
-            .padding(.top, 25)
-            .padding(.bottom, 5)
         }
     }
 }
