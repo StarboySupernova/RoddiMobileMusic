@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		802FFC8C27F7A953007BFCF3 /* ArtistPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802FFC8B27F7A953007BFCF3 /* ArtistPage.swift */; };
+		802FFC8E27F7B026007BFCF3 /* ArtistHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802FFC8D27F7B026007BFCF3 /* ArtistHome.swift */; };
 		8082E0E527F3C10600C54E4F /* ExtensionOnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082E0E427F3C10600C54E4F /* ExtensionOnView.swift */; };
 		8082E0E727F3C1D700C54E4F /* ExtensionOnColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082E0E627F3C1D700C54E4F /* ExtensionOnColor.swift */; };
 		8082E0E927F3D13D00C54E4F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082E0E827F3D13D00C54E4F /* Home.swift */; };
+		8097351227F689A200115C16 /* ExtensionOnLinearGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097351127F689A200115C16 /* ExtensionOnLinearGradient.swift */; };
+		80AC5EEB27F9032D005765E0 /* OffsetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC5EEA27F9032D005765E0 /* OffsetModifier.swift */; };
 		80D49BE027F28D75000B9191 /* RoddiMobileMusicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D49BDF27F28D75000B9191 /* RoddiMobileMusicApp.swift */; };
 		80D49BE227F28D75000B9191 /* MusicStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D49BE127F28D75000B9191 /* MusicStackView.swift */; };
 		80D49BE427F28D76000B9191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80D49BE327F28D76000B9191 /* Assets.xcassets */; };
@@ -18,9 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		802FFC8B27F7A953007BFCF3 /* ArtistPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistPage.swift; sourceTree = "<group>"; };
+		802FFC8D27F7B026007BFCF3 /* ArtistHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistHome.swift; sourceTree = "<group>"; };
 		8082E0E427F3C10600C54E4F /* ExtensionOnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOnView.swift; sourceTree = "<group>"; };
 		8082E0E627F3C1D700C54E4F /* ExtensionOnColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOnColor.swift; sourceTree = "<group>"; };
 		8082E0E827F3D13D00C54E4F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		8097351127F689A200115C16 /* ExtensionOnLinearGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOnLinearGradient.swift; sourceTree = "<group>"; };
+		80AC5EEA27F9032D005765E0 /* OffsetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetModifier.swift; sourceTree = "<group>"; };
 		80D49BDC27F28D75000B9191 /* RoddiMobileMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoddiMobileMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80D49BDF27F28D75000B9191 /* RoddiMobileMusicApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoddiMobileMusicApp.swift; sourceTree = "<group>"; };
 		80D49BE127F28D75000B9191 /* MusicStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicStackView.swift; sourceTree = "<group>"; };
@@ -40,6 +48,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		802FFC8A27F69848007BFCF3 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		8097351327F68A4200115C16 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8082E0E627F3C1D700C54E4F /* ExtensionOnColor.swift */,
+				8097351127F689A200115C16 /* ExtensionOnLinearGradient.swift */,
+				8082E0E427F3C10600C54E4F /* ExtensionOnView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		80D49BD327F28D74000B9191 = {
 			isa = PBXGroup;
 			children = (
@@ -60,7 +85,9 @@
 			isa = PBXGroup;
 			children = (
 				80D49BDF27F28D75000B9191 /* RoddiMobileMusicApp.swift */,
-				80D49BEE27F29123000B9191 /* View */,
+				802FFC8A27F69848007BFCF3 /* Styles */,
+				8097351327F68A4200115C16 /* Extensions */,
+				80D49BEE27F29123000B9191 /* Views */,
 				80D49BED27F290CA000B9191 /* Model */,
 				80D49BE327F28D76000B9191 /* Assets.xcassets */,
 				80D49BE527F28D76000B9191 /* Preview Content */,
@@ -84,15 +111,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		80D49BEE27F29123000B9191 /* View */ = {
+		80D49BEE27F29123000B9191 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				80D49BE127F28D75000B9191 /* MusicStackView.swift */,
-				8082E0E427F3C10600C54E4F /* ExtensionOnView.swift */,
-				8082E0E627F3C1D700C54E4F /* ExtensionOnColor.swift */,
 				8082E0E827F3D13D00C54E4F /* Home.swift */,
+				802FFC8D27F7B026007BFCF3 /* ArtistHome.swift */,
+				802FFC8B27F7A953007BFCF3 /* ArtistPage.swift */,
+				80AC5EEA27F9032D005765E0 /* OffsetModifier.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,9 +196,13 @@
 				80D49BE227F28D75000B9191 /* MusicStackView.swift in Sources */,
 				8082E0E527F3C10600C54E4F /* ExtensionOnView.swift in Sources */,
 				80D49BE027F28D75000B9191 /* RoddiMobileMusicApp.swift in Sources */,
+				8097351227F689A200115C16 /* ExtensionOnLinearGradient.swift in Sources */,
 				80D49BF027F2924F000B9191 /* Album.swift in Sources */,
 				8082E0E927F3D13D00C54E4F /* Home.swift in Sources */,
 				8082E0E727F3C1D700C54E4F /* ExtensionOnColor.swift in Sources */,
+				80AC5EEB27F9032D005765E0 /* OffsetModifier.swift in Sources */,
+				802FFC8E27F7B026007BFCF3 /* ArtistHome.swift in Sources */,
+				802FFC8C27F7A953007BFCF3 /* ArtistPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

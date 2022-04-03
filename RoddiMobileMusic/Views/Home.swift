@@ -52,7 +52,7 @@ struct Home: View {
             
             GeometryReader { geometry in
                 let size = geometry.size //necessary to make calling frame cleaner
-                stackPlayerView(size: size)
+                StackPlayerView(size: size)
                     .frame(width: size.width, height: size.height, alignment: .center)
             }
             
@@ -64,7 +64,7 @@ struct Home: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 15) {
-                        ForEach(albums){ album in
+                        ForEach(albums){ album in //true recently played functionality to be added
                             Image(album.albumImage)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
@@ -90,7 +90,7 @@ struct Home: View {
                     Color.offWhite
                         .ignoresSafeArea()
                     
-                    detailView(currentCard: currentCard)
+                    DetailView(currentCard: currentCard)
                 }
                 
             }
@@ -98,10 +98,11 @@ struct Home: View {
     }
     
     //Stack player view
-    @ViewBuilder func stackPlayerView (size: CGSize) -> some View {
+    @ViewBuilder func StackPlayerView (size: CGSize) -> some View {
         let offsetHeight = size.height * 0.1
         
         ZStack {
+            //we need to use reversed so that it comes out as needed
             ForEach(stackAlbums.reversed()) { album in
                 
                 let index = getIndex(album: album) //used to help calculate unique values for each album card imagesize, and unique tapped & untapped offset values in the y-plane
@@ -158,7 +159,7 @@ struct Home: View {
     }
     
     //Detail View
-    @ViewBuilder func detailView(currentCard: Album) -> some View {
+    @ViewBuilder func DetailView(currentCard: Album) -> some View {
         VStack(spacing: 0) {
             Button {
                 rotateCards = true

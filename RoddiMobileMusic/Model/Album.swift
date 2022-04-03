@@ -17,10 +17,9 @@ struct Album: Identifiable {
 //ZStack albums
 var stackAlbums: [Album] = [
     Album(albumName: "Colours of Divinity", albumImage: "neonalbumcover"),
-    Album(albumName: "Mother Touch", albumImage: "maryalbumcover"),
     Album(albumName: "Stairway to Heaven", albumImage: "banisteralbumcover"),
     Album(albumName: "Fragments", albumImage: "afternoonalbumcover"),
-
+    Album(albumName: "GreyScale", albumImage: "couplealbumcover")
 ]
 
 var albums: [Album] = [
