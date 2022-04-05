@@ -20,6 +20,8 @@
 		80D49BE427F28D76000B9191 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80D49BE327F28D76000B9191 /* Assets.xcassets */; };
 		80D49BE727F28D76000B9191 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80D49BE627F28D76000B9191 /* Preview Assets.xcassets */; };
 		80D49BF027F2924F000B9191 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D49BEF27F2924F000B9191 /* Album.swift */; };
+		80DAF1BA27FA5964005FCCA6 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DAF1B927FA5964005FCCA6 /* Track.swift */; };
+		80DAF1BC27FA5AA8005FCCA6 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DAF1BB27FA5AA8005FCCA6 /* Artist.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		80D49BE327F28D76000B9191 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80D49BE627F28D76000B9191 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		80D49BEF27F2924F000B9191 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		80DAF1B927FA5964005FCCA6 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		80DAF1BB27FA5AA8005FCCA6 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,8 @@
 			children = (
 				80D49BEF27F2924F000B9191 /* Album.swift */,
 				80AC5EEC27F92B89005765E0 /* TabHeadings.swift */,
+				80DAF1B927FA5964005FCCA6 /* Track.swift */,
+				80DAF1BB27FA5AA8005FCCA6 /* Artist.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -205,8 +211,10 @@
 				8082E0E927F3D13D00C54E4F /* Home.swift in Sources */,
 				8082E0E727F3C1D700C54E4F /* ExtensionOnColor.swift in Sources */,
 				80AC5EEB27F9032D005765E0 /* OffsetModifier.swift in Sources */,
+				80DAF1BC27FA5AA8005FCCA6 /* Artist.swift in Sources */,
 				802FFC8E27F7B026007BFCF3 /* ArtistHome.swift in Sources */,
 				802FFC8C27F7A953007BFCF3 /* ArtistPage.swift in Sources */,
+				80DAF1BA27FA5964005FCCA6 /* Track.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

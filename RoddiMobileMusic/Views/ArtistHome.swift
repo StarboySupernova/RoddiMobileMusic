@@ -9,12 +9,20 @@ import SwiftUI
 
 struct ArtistHome: View {
     
-    @State var currentTab: String = "Popular" //test private var here
+    @State private var currentTab = TabHeadings.Popular
+    //Binding to artist stored elsewhere to be added
+    @State private var artistAlbums: [Album] = albums.filter { music in
+        music.albumArtistName == "Didier Thauvin" //binding to be added here
+    }
+    @State private var tracks: [Track] = albums.flatMap { album in
+        album.tracks.filter { track in
+            track.artist == "Didier Thauvin" //binding to be added here too
+        }
+    }
+    
     //Smooth sliding effect
     @Namespace var animation
-    @State var artistAlbums: [Album] = albums
-    
-    @State var headerOffsets: (CGFloat, CGFloat) = (0,0)
+    @State private var headerOffsets: (CGFloat, CGFloat) = (0,0)
     
     var body: some View {
         
@@ -25,7 +33,15 @@ struct ArtistHome: View {
                 //Pinned header with content
                 LazyVStack(pinnedViews: [.sectionHeaders]) {
                     Section {
-                        SongList()
+                        switch currentTab {
+                        case .Popular :
+                            PopularList()
+                        case .Songs :
+                            SongList()
+                        default :
+                            VStack{}
+                        }
+
                     } header: {
                         PinnedHeaderView()
                             .background {
@@ -52,7 +68,7 @@ struct ArtistHome: View {
     
     //Pinned content
     @ViewBuilder
-    func SongList() -> some View {
+    func PopularList() -> some View {
         VStack(spacing: 20) {
             ForEach($artistAlbums) { $artistAlbum in
                 HStack(spacing: 12) {
@@ -97,9 +113,64 @@ struct ArtistHome: View {
                             .font(.title3)
                             .foregroundColor(.white)
                     }
-
-
+                }
+            }
+        }
+        .padding()
+        .padding(.top, 25)
+        .padding(.bottom, 150)
+    }
+    
+    @ViewBuilder
+    func SongList() -> some View {
+        
+        VStack(spacing: 20) {
+            ForEach($tracks) { $track in
+                HStack(spacing: 12) {
                     
+                    Text("\(track.trackNumber != nil ? track.trackNumber! + 1 : 1)")
+                        .fontWeight(.ultraLight)
+                        .foregroundColor(.white)
+                    
+                    /*Image(artistAlbum.albumImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 55, height: 55)
+                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))*/
+                    
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(track.trackName)
+                            .fontWeight(.semibold)
+                        //might want to put a for each to create sections for each album
+                        Text(track.parentAlbumName)
+                            .fontWeight(.ultraLight)
+                        
+                        Label {
+                            Text("144k")
+                        } icon: {
+                            Image(systemName: "beats.headphones")
+                                .foregroundColor(.white)
+                        }
+                        .foregroundColor(.gray)
+                        .font(.caption)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Button {
+                        track.isLiked.toggle()
+                    } label: {
+                        Image(systemName: track.isLiked ? "heart.circle" : "suit.heart")
+                            .font(.title3)
+                            .foregroundColor(track.isLiked ? .green : .white)
+                    }
+                    
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "ellipsis")
+                            .font(.title3)
+                            .foregroundColor(.white)
+                    }
                 }
             }
         }
@@ -113,6 +184,12 @@ struct ArtistHome: View {
             album.id == currentAlbum.id
         } ?? 0
     }
+    
+   /* func getIndex(song: Track) -> Int {
+        return artistAlbums.firstIndex { currentSong in
+            song.id == currentSong.id
+        } ?? 0
+    } */
     
     //Header view
     @ViewBuilder func HeaderView() -> some View {
@@ -186,11 +263,11 @@ struct ArtistHome: View {
                         VStack(spacing: 12) {
                             Text(tabHeader.rawValue)
                                 .fontWeight(.semibold)
-                                .foregroundColor(currentTab == tabHeader.rawValue ? .white : .gray)
+                                .foregroundColor(currentTab == tabHeader ? .white : .gray)
                             
                             
                             ZStack {
-                                if currentTab == tabHeader.rawValue {
+                                if currentTab == tabHeader {
                                     RoundedRectangle(cornerRadius: 4, style: .continuous)
                                         .fill(.white)
                                         .matchedGeometryEffect(id: "TAB", in: animation)
@@ -205,7 +282,7 @@ struct ArtistHome: View {
                         .contentShape(Rectangle())
                         .onTapGesture {
                             withAnimation(.easeInOut) {
-                                currentTab = tabHeader.rawValue
+                                currentTab = tabHeader
                                 value.scrollTo(tabHeader, anchor: .center)
                             }
                         }
