@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		802FFC8C27F7A953007BFCF3 /* ArtistPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802FFC8B27F7A953007BFCF3 /* ArtistPage.swift */; };
 		802FFC8E27F7B026007BFCF3 /* ArtistHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802FFC8D27F7B026007BFCF3 /* ArtistHome.swift */; };
+		80411A7C27FCEC380004062B /* ExtensionOnString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80411A7B27FCEC380004062B /* ExtensionOnString.swift */; };
 		8082E0E527F3C10600C54E4F /* ExtensionOnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082E0E427F3C10600C54E4F /* ExtensionOnView.swift */; };
 		8082E0E727F3C1D700C54E4F /* ExtensionOnColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082E0E627F3C1D700C54E4F /* ExtensionOnColor.swift */; };
 		8082E0E927F3D13D00C54E4F /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082E0E827F3D13D00C54E4F /* Home.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		802FFC8B27F7A953007BFCF3 /* ArtistPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistPage.swift; sourceTree = "<group>"; };
 		802FFC8D27F7B026007BFCF3 /* ArtistHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistHome.swift; sourceTree = "<group>"; };
+		80411A7B27FCEC380004062B /* ExtensionOnString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOnString.swift; sourceTree = "<group>"; };
 		8082E0E427F3C10600C54E4F /* ExtensionOnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOnView.swift; sourceTree = "<group>"; };
 		8082E0E627F3C1D700C54E4F /* ExtensionOnColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOnColor.swift; sourceTree = "<group>"; };
 		8082E0E827F3D13D00C54E4F /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				8082E0E627F3C1D700C54E4F /* ExtensionOnColor.swift */,
 				8097351127F689A200115C16 /* ExtensionOnLinearGradient.swift */,
 				8082E0E427F3C10600C54E4F /* ExtensionOnView.swift */,
+				80411A7B27FCEC380004062B /* ExtensionOnString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				80AC5EEB27F9032D005765E0 /* OffsetModifier.swift in Sources */,
 				80DAF1BC27FA5AA8005FCCA6 /* Artist.swift in Sources */,
 				802FFC8E27F7B026007BFCF3 /* ArtistHome.swift in Sources */,
+				80411A7C27FCEC380004062B /* ExtensionOnString.swift in Sources */,
 				802FFC8C27F7A953007BFCF3 /* ArtistPage.swift in Sources */,
 				80DAF1BA27FA5964005FCCA6 /* Track.swift in Sources */,
 			);
