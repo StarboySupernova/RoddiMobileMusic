@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Home: View {
+struct PlaylistView: View {
     //Animation properties
     @State var expandCards = false //test these with private var
     @State var currentCard: Album?
@@ -44,7 +44,7 @@ struct Home: View {
                 
             }
             .overlay {
-                Text("My Playlist")
+                Text("My Playlists")
                     .fontWeight(.semibold)
             }
             .padding(.horizontal)
@@ -315,8 +315,8 @@ struct Home: View {
     }
 }
 
-struct Home_Previews: PreviewProvider {
+struct PlaylistView_Previews: PreviewProvider {
     static var previews: some View {
-        MusicStackView()
+        PlaylistView()
     }
 }

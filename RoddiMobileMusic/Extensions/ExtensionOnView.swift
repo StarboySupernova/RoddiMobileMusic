@@ -12,6 +12,11 @@ import SwiftUI
      func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
              clipShape( RoundedCorner(radius: radius, corners: corners) )
      }
+     
+     //Extending view to get screen size
+     func getRect() -> CGRect {
+         return UIScreen.main.bounds
+     }
  }
 
  struct RoundedCorner: Shape {

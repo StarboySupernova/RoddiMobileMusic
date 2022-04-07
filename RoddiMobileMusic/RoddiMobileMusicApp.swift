@@ -11,7 +11,7 @@ import SwiftUI
 struct RoddiMobileMusicApp: App {
     var body: some Scene {
         WindowGroup {
-            MusicStackView()
+            MainView()
         }
     }
 }
