@@ -10,9 +10,15 @@
 		802FFC8C27F7A953007BFCF3 /* ArtistPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802FFC8B27F7A953007BFCF3 /* ArtistPage.swift */; };
 		802FFC8E27F7B026007BFCF3 /* ArtistHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802FFC8D27F7B026007BFCF3 /* ArtistHome.swift */; };
 		80411A7C27FCEC380004062B /* ExtensionOnString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80411A7B27FCEC380004062B /* ExtensionOnString.swift */; };
+		807D2E8F27FFBD89009976C9 /* Ring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D2E8E27FFBD89009976C9 /* Ring.swift */; };
+		807D2E9127FFC7C0009976C9 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D2E9027FFC7C0009976C9 /* Step.swift */; };
+		807D2E9327FFCA7F009976C9 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D2E9227FFCA7F009976C9 /* HistoryView.swift */; };
+		807D2E9527FFCB17009976C9 /* HistoryWrappingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D2E9427FFCB17009976C9 /* HistoryWrappingView.swift */; };
 		8082E0E527F3C10600C54E4F /* ExtensionOnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082E0E427F3C10600C54E4F /* ExtensionOnView.swift */; };
 		8082E0E727F3C1D700C54E4F /* ExtensionOnColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082E0E627F3C1D700C54E4F /* ExtensionOnColor.swift */; };
 		8082E0E927F3D13D00C54E4F /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082E0E827F3D13D00C54E4F /* PlaylistView.swift */; };
+		8087FCD62800FEC600AD05D8 /* TrackHistoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8087FCD52800FEC600AD05D8 /* TrackHistoryCardView.swift */; };
+		8087FCD928010E8800AD05D8 /* TotalMinutesGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8087FCD828010E8800AD05D8 /* TotalMinutesGraphView.swift */; };
 		8097351227F689A200115C16 /* ExtensionOnLinearGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097351127F689A200115C16 /* ExtensionOnLinearGradient.swift */; };
 		80AC5EEB27F9032D005765E0 /* OffsetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC5EEA27F9032D005765E0 /* OffsetModifier.swift */; };
 		80AC5EED27F92B89005765E0 /* TabHeadings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC5EEC27F92B89005765E0 /* TabHeadings.swift */; };
@@ -32,9 +38,15 @@
 		802FFC8B27F7A953007BFCF3 /* ArtistPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistPage.swift; sourceTree = "<group>"; };
 		802FFC8D27F7B026007BFCF3 /* ArtistHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistHome.swift; sourceTree = "<group>"; };
 		80411A7B27FCEC380004062B /* ExtensionOnString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOnString.swift; sourceTree = "<group>"; };
+		807D2E8E27FFBD89009976C9 /* Ring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ring.swift; sourceTree = "<group>"; };
+		807D2E9027FFC7C0009976C9 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		807D2E9227FFCA7F009976C9 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		807D2E9427FFCB17009976C9 /* HistoryWrappingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryWrappingView.swift; sourceTree = "<group>"; };
 		8082E0E427F3C10600C54E4F /* ExtensionOnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOnView.swift; sourceTree = "<group>"; };
 		8082E0E627F3C1D700C54E4F /* ExtensionOnColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOnColor.swift; sourceTree = "<group>"; };
 		8082E0E827F3D13D00C54E4F /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
+		8087FCD52800FEC600AD05D8 /* TrackHistoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackHistoryCardView.swift; sourceTree = "<group>"; };
+		8087FCD828010E8800AD05D8 /* TotalMinutesGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalMinutesGraphView.swift; sourceTree = "<group>"; };
 		8097351127F689A200115C16 /* ExtensionOnLinearGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionOnLinearGradient.swift; sourceTree = "<group>"; };
 		80AC5EEA27F9032D005765E0 /* OffsetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetModifier.swift; sourceTree = "<group>"; };
 		80AC5EEC27F92B89005765E0 /* TabHeadings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabHeadings.swift; sourceTree = "<group>"; };
@@ -67,6 +79,26 @@
 			children = (
 			);
 			path = Styles;
+			sourceTree = "<group>";
+		};
+		8087FCD427FFD32E00AD05D8 /* History Views */ = {
+			isa = PBXGroup;
+			children = (
+				807D2E9227FFCA7F009976C9 /* HistoryView.swift */,
+				807D2E9427FFCB17009976C9 /* HistoryWrappingView.swift */,
+				8087FCD52800FEC600AD05D8 /* TrackHistoryCardView.swift */,
+				8087FCD828010E8800AD05D8 /* TotalMinutesGraphView.swift */,
+			);
+			path = "History Views";
+			sourceTree = "<group>";
+		};
+		8087FCD72800FF4300AD05D8 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				80E83C1027FE2C8F0009C625 /* TabButton.swift */,
+				80E83C1227FE43C80009C625 /* SideMenu.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		8097351327F68A4200115C16 /* Extensions */ = {
@@ -125,6 +157,8 @@
 				80AC5EEC27F92B89005765E0 /* TabHeadings.swift */,
 				80DAF1B927FA5964005FCCA6 /* Track.swift */,
 				80DAF1BB27FA5AA8005FCCA6 /* Artist.swift */,
+				807D2E8E27FFBD89009976C9 /* Ring.swift */,
+				807D2E9027FFC7C0009976C9 /* Step.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -138,8 +172,8 @@
 				802FFC8B27F7A953007BFCF3 /* ArtistPage.swift */,
 				80AC5EEA27F9032D005765E0 /* OffsetModifier.swift */,
 				80E83C0E27FE2B6F0009C625 /* MainView.swift */,
-				80E83C1027FE2C8F0009C625 /* TabButton.swift */,
-				80E83C1227FE43C80009C625 /* SideMenu.swift */,
+				8087FCD72800FF4300AD05D8 /* Menu */,
+				8087FCD427FFD32E00AD05D8 /* History Views */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,11 +250,16 @@
 			files = (
 				80AC5EED27F92B89005765E0 /* TabHeadings.swift in Sources */,
 				80D49BE227F28D75000B9191 /* LandingView.swift in Sources */,
+				8087FCD928010E8800AD05D8 /* TotalMinutesGraphView.swift in Sources */,
 				8082E0E527F3C10600C54E4F /* ExtensionOnView.swift in Sources */,
 				80D49BE027F28D75000B9191 /* RoddiMobileMusicApp.swift in Sources */,
 				8097351227F689A200115C16 /* ExtensionOnLinearGradient.swift in Sources */,
+				807D2E9527FFCB17009976C9 /* HistoryWrappingView.swift in Sources */,
 				80D49BF027F2924F000B9191 /* Album.swift in Sources */,
 				8082E0E927F3D13D00C54E4F /* PlaylistView.swift in Sources */,
+				807D2E9127FFC7C0009976C9 /* Step.swift in Sources */,
+				8087FCD62800FEC600AD05D8 /* TrackHistoryCardView.swift in Sources */,
+				807D2E8F27FFBD89009976C9 /* Ring.swift in Sources */,
 				8082E0E727F3C1D700C54E4F /* ExtensionOnColor.swift in Sources */,
 				80E83C1327FE43C80009C625 /* SideMenu.swift in Sources */,
 				80AC5EEB27F9032D005765E0 /* OffsetModifier.swift in Sources */,
@@ -229,6 +268,7 @@
 				80411A7C27FCEC380004062B /* ExtensionOnString.swift in Sources */,
 				802FFC8C27F7A953007BFCF3 /* ArtistPage.swift in Sources */,
 				80E83C1127FE2C8F0009C625 /* TabButton.swift in Sources */,
+				807D2E9327FFCA7F009976C9 /* HistoryView.swift in Sources */,
 				80E83C0F27FE2B6F0009C625 /* MainView.swift in Sources */,
 				80DAF1BA27FA5964005FCCA6 /* Track.swift in Sources */,
 			);

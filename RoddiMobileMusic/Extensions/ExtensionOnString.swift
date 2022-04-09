@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+//String conformance to Identifiable
 extension String: Identifiable {
     public typealias ID = Int
     public var id: Int {

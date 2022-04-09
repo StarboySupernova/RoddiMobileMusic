@@ -22,6 +22,8 @@ struct LandingView: View {
             //Views
             HomePage()
                 .tag("Home")
+            Playlists()
+                .tag("My Playlists")
         }
     }
 }
@@ -32,7 +34,7 @@ struct LandingView_Previews: PreviewProvider {
     }
 }
 
-//Sub views temp
+//Sub views
 struct HomePage: View {
     var body: some View {
         NavigationView {
@@ -41,7 +43,15 @@ struct HomePage: View {
                 .fontWeight(.heavy)
                 .foregroundColor(.primary)
                 .navigationTitle("Home")
-                .navigationTitle("Late")
+        }
+    }
+}
+
+struct Playlists: View {
+    var body: some View {
+        NavigationView {
+            PlaylistView()
+                .navigationTitle("My Playlists")
         }
     }
 }

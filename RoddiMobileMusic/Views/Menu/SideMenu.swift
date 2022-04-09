@@ -28,9 +28,10 @@ struct SideMenu: View {
                     .fontWeight(.heavy)
                     .foregroundColor(.white)
                     .shadow(radius: 10) //use glow from neumorphism
+                    .glow(color: .blue.opacity(0.2), radius: 1)
                 
                 Button {
-                    
+                    //use LandingView to present profile page to be created
                 } label: {
                     Text("View Profile")
                         .fontWeight(.semibold)
@@ -42,7 +43,7 @@ struct SideMenu: View {
             //tab buttons
             VStack(alignment: .leading, spacing: 10) {
                 TabButton(image: "house", title: "Home", selectedTab: $selectedTab, animation: animation)
-                TabButton(image: "music.note", title: "My Playlists", selectedTab: $selectedTab, animation: animation)
+                TabButton(image: "music.note.list", title: "My Playlists", selectedTab: $selectedTab, animation: animation)
                 TabButton(image: "clock", title: "History", selectedTab: $selectedTab, animation: animation)
                 TabButton(image: "gear", title: "Settings", selectedTab: $selectedTab, animation: animation)
                 TabButton(image: "questionmark.circle", title: "Help", selectedTab: $selectedTab, animation: animation)

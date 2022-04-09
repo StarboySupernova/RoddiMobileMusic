@@ -14,7 +14,7 @@ struct MainView: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(mycolors: Color.darkStart, Color.darkEnd)
+            LinearGradient(mycolors: Color.darkStart, Color.BG)
                 .ignoresSafeArea()
             
             //Side Menu

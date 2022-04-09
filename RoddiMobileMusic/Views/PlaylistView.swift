@@ -26,12 +26,6 @@ struct PlaylistView: View {
     var body: some View {
         VStack {
             HStack {
-                Button{
-                    
-                } label: {
-                    Image(systemName: "line.3.horizontal.decrease")
-                        .font(.title2)
-                }
                 
                 Spacer()
                 
@@ -42,10 +36,6 @@ struct PlaylistView: View {
                         .font(.title2)
                 }
                 
-            }
-            .overlay {
-                Text("My Playlists")
-                    .fontWeight(.semibold)
             }
             .padding(.horizontal)
             .foregroundColor(.black)
@@ -87,7 +77,7 @@ struct PlaylistView: View {
             //Detail View
             if let currentCard = currentCard, showDetail {
                 ZStack {
-                    Color.offWhite
+                    LinearGradient(mycolors: .white.opacity(0.95), Color.BG.opacity(0.985))
                         .ignoresSafeArea()
                     
                     DetailView(currentCard: currentCard)
