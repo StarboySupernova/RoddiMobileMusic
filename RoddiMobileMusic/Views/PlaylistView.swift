@@ -8,24 +8,26 @@
 import SwiftUI
 
 struct PlaylistView: View {
+    @State private var showArtist: Bool = false
     //Animation properties
-    @State var expandCards = false //test these with private var
-    @State var currentCard: Album?
+    @State private var expandCards = false //test these with private var
+    @State private var currentCard: Album?
     //Storing current card index for animating cards
-    @State var currentIndex: Int = -1
-    @State var showDetail = false
+    @State private var currentIndex: Int = -1
+    @State private var showDetail = false
     //For Hero animation
     @Namespace var animation
     //Current album image size
-    @State var cardSize: CGSize = .zero
+    @State private var cardSize: CGSize = .zero
     //Detail Card Animation Properties
-    @State var animateDetailView: Bool = false
-    @State var rotateCards: Bool = false
-    @State var showDetailContent: Bool = false
+    @State private var animateDetailView: Bool = false
+    @State private var rotateCards: Bool = false
+    @State private var showDetailContent: Bool = false
     
     var body: some View {
         VStack {
             HStack {
+                Text("Favourites")
                 
                 Spacer()
                 
@@ -34,16 +36,22 @@ struct PlaylistView: View {
                 } label: {
                     Image(systemName: "magnifyingglass")
                         .font(.title2)
+                        .foregroundColor(.orange)
                 }
                 
             }
             .padding(.horizontal)
-            .foregroundColor(.black)
+            .foregroundColor(.white)
             
             GeometryReader { geometry in
                 let size = geometry.size //necessary to make calling frame cleaner
                 StackPlayerView(size: size)
                     .frame(width: size.width, height: size.height, alignment: .center)
+                    .background{
+                        Background()
+                            .cornerRadius(25, corners: [.topRight, .bottomRight, .bottomLeft])
+                            .opacity(0.2)
+                    }
             }
             
             VStack(alignment: .leading, spacing: 15) {
@@ -51,38 +59,71 @@ struct PlaylistView: View {
                     .fontWeight(.semibold)
                     .padding(.horizontal)
                     .padding(.bottom, 10)
+                    .foregroundColor(.white)
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 15) {
-                        ForEach(albums){ album in //true recently played functionality to be added
-                            Image(album.albumImage)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 95, height: 95)
-                                .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                        ForEach(albums.reversed()){ album in //true recently played functionality to be added
+                            VStack {
+                                Image(album.albumImage)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 95, height: 95)
+                                    .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                                
+                                Text(album.albumName)
+                                    .font(.callout)
+                                    .foregroundColor(.white)
+                                    .padding(.vertical, 10)
+                                
+                                Text(album.albumArtistName)
+                                    .font(.callout)
+                                    .foregroundColor(.white)
+                                    .padding(.bottom, 5)
+                                
+                                if let releaseYear = album.releaseYear {
+                                    Text(releaseYear)
+                                        .foregroundColor(.offWhite)
+                                } else {
+                                    Text("New!")
+                                        .foregroundColor(.white)
+                                        .glow(color: .orange.opacity(0.3), radius: 20)
+                                }
+                            }
                         }
                     }
                     .padding([.horizontal, .bottom])
                 }
+            }
+            .padding(.top, 10)
+            .background {
+                Background()
+                    .cornerRadius(15)
+                    .opacity(0.2)
             }
             
         }
         .padding(.vertical)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background {
-            Color.offWhite
-                .ignoresSafeArea()
+            ZStack {
+                LinearGradient(mycolors: .darkEnd, .darkStart)
+                    .ignoresSafeArea()
+            }
         }
         .overlay {
             //Detail View
             if let currentCard = currentCard, showDetail {
                 ZStack {
-                    LinearGradient(mycolors: .white.opacity(0.95), Color.BG.opacity(0.985))
+                    LinearGradient(mycolors: .darkStart, .darkEnd)
                         .ignoresSafeArea()
                     
                     DetailView(currentCard: currentCard)
                 }
-                
+            }
+            //to be removed
+            if showArtist {
+                ArtistHome(artist: .constant(sampleArtists[1])) //ideally, would want to show an albumView here
             }
         }
     }
@@ -168,13 +209,18 @@ struct PlaylistView: View {
                 
                 Image(systemName: "chevron.left")
                     .font(.title2)
-                    .foregroundColor(.black)
+                    .foregroundColor(.orange)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding([.horizontal, .top])
             
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 25) {
+                    Text("Now Playing")
+                        .font(.title2)
+                        .fontWeight(.light)
+                        .foregroundColor(.white)
+                    
                     Image(currentCard.albumImage)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -186,11 +232,24 @@ struct PlaylistView: View {
                         .matchedGeometryEffect(id: currentCard.id, in: animation)
                         .padding(.top, 50)
                     
-                    VStack(spacing: 20){
+                    VStack(spacing: 5){
                         Text(currentCard.albumName)
                             .font(.title3)
                             .bold()
                             .padding(.top, 10)
+                            .foregroundColor(.white)
+                        
+                        Text(currentCard.albumArtistName) //make into button that takes you to artist page
+                            .font(.title3)
+                            .bold()
+                            .padding(.top, 10)
+                            .foregroundColor(.white)
+                        
+                        Text(currentCard.releaseYear ?? "NEW")
+                            .font(.title3)
+                            .bold()
+                            .padding(.top, 10)
+                            .foregroundColor(.white)
                         
                         HStack(spacing: 50){
                             Button {
@@ -198,6 +257,7 @@ struct PlaylistView: View {
                             } label: {
                                 Image(systemName: "shuffle")
                                     .font(.title2)
+                                    .foregroundColor(.orange)
                             }
                             
                             Button {
@@ -218,13 +278,15 @@ struct PlaylistView: View {
                             } label: {
                                 Image(systemName: "arrow.2.squarepath")
                                     .font(.title2)
+                                    .foregroundColor(.orange)
                             }
                             
                         }
                         .foregroundColor(.black)
                         .padding(.top, 10)
                         
-                        Text("Upcoming Song")
+                        Text("Upcoming")
+                            .foregroundColor(.white)
                             .font(.title3)
                             .bold()
                             .padding(.top, 20)
@@ -232,7 +294,13 @@ struct PlaylistView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                         
                         ForEach(albums) { album in
-                            AlbumCardView(album: album)
+                            Button {
+                                if showArtist {
+                                    showDetail = false
+                                }
+                            }label: {
+                                AlbumCardView(album: album)
+                            }
                         }
                     }
                     .padding(.horizontal)
@@ -265,11 +333,13 @@ struct PlaylistView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text(album.albumName)
                     .fontWeight(.semibold)
+                    .foregroundColor(.white)
                 
                 Label {
-                    Text("144k")
+                    Text("144k Listeners")
                 } icon: {
                     Image(systemName: "beats.headphones")
+                        .foregroundColor(.orange)
                 }
                 .font(.caption)
                 .foregroundColor(.gray)
@@ -282,19 +352,23 @@ struct PlaylistView: View {
             } label: {
                 Image(systemName: "ellipsis")
                     .font(.title3)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.orange)
             }
             
             Button {
                 
             } label: {
-                Image(systemName: album.isLiked ? "suit.heart.fill" : "suit.heart")
+                Image(systemName: album.isLiked ? "heart.circle" : "heart")
                     .font(.title3)
-                    .foregroundColor(album.isLiked ? .red : .gray)
+                    .foregroundColor(album.isLiked ? .orange : .gray)
             }
-            
-            
         }
+        //to be removed
+        .onTapGesture(perform: {
+            showArtist = true
+            showDetail = false
+        })
+        
     }
     
     //Array Index

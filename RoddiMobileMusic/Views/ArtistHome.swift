@@ -9,16 +9,13 @@ import SwiftUI
 
 struct ArtistHome: View {
     
+    @Binding var artist: Artist?  //binding still to be worked out
+    
     @State private var currentTab = TabHeadings.Popular
     //Binding to artist stored elsewhere to be added
-    @State private var artistAlbums: [Album] = albums.filter { selected in
-        selected.albumArtistName == "Didier Thauvin" //binding to be added here
-    }
-    @State private var tracks: [Track] = albums.flatMap { album in
-        album.tracks.filter { track in
-            track.artist == "Didier Thauvin" //binding to be added here too
-        }
-    }
+    @State private var artistAlbums: [Album] = []
+    
+    @State private var tracks: [Track] = []
     
     @State private var allAlbums = albums
     @State private var listeners: Int = 144
@@ -39,6 +36,22 @@ struct ArtistHome: View {
         return releaseYears.sorted(by: >)
     }
     
+    func getAlbums(){
+        let albums = albums.filter { selected in
+            selected.albumArtistName == self.artist?.artistName
+        }
+        self.artistAlbums = albums
+    }
+    
+    func getTracks(){
+        let tracks = albums.flatMap { album in
+            album.tracks.filter { track in
+                track.artist == self.artist?.artistName //binding to be added here too
+            }
+        }
+        self.tracks = tracks
+    }
+    
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: false) {
@@ -55,12 +68,11 @@ struct ArtistHome: View {
                             SongList()
                         case .Albums :
                             AlbumList()
+                                .padding(.horizontal, 10)
                         case .Suggested :
                             SuggestedList()
                         default :
-                            VStack{
-                                
-                            }
+                            RoundedRectangle(cornerRadius: 25, style: .continuous)
                         }
 
                     } header: {
@@ -72,9 +84,16 @@ struct ArtistHome: View {
                             .modifier(OffsetModifier(offset: $headerOffsets.0, returnFromStart: false))
                             .modifier(OffsetModifier(offset: $headerOffsets.1))
                     }
-                    
                 }
             }
+        }
+        .onAppear(perform: {
+            getAlbums()
+            getTracks()
+        })
+        .background {
+            LinearGradient(mycolors: Color.darkStart, Color.darkEnd)
+                .frame(height: getRect().height)
         }
         .overlay(content: {
             Rectangle()
@@ -92,54 +111,60 @@ struct ArtistHome: View {
     func PopularList() -> some View {
         VStack(spacing: 20) {
             ForEach($artistAlbums) { $artistAlbum in
-                HStack(spacing: 12) {
-                    
-                    Text("\(getIndex(album: artistAlbum) + 1)")
-                        .fontWeight(.ultraLight)
-                        .foregroundColor(.white)
-                    
-                    Image(artistAlbum.albumImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 55, height: 55)
-                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text(artistAlbum.albumName)
-                            .fontWeight(.semibold)
+                VStack {
+                    HStack(spacing: 12) {
                         
-                        Label {
-                            HStack {
-                                Text("\(listeners)k listeners")
-                                Spacer()
-                                Text(artistAlbum.releaseYear ?? "new")
-                                    .kerning(3)
-                                    .padding(.trailing, 5)
-                            }
-                        } icon: {
-                            Image(systemName: "headphones")
-                                .foregroundColor(.white)
-                        }
-                        .foregroundColor(.gray)
-                        .font(.caption)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    Button {
-                        artistAlbum.isLiked.toggle()
-                    } label: {
-                        Image(systemName: artistAlbum.isLiked ? "heart.circle" : "suit.heart")
-                            .font(.title3)
-                            .foregroundColor(artistAlbum.isLiked ? .green : .white)
-                    }
-                    
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "ellipsis")
-                            .font(.title3)
+                        Text("\(getIndex(album: artistAlbum) + 1)")
+                            .fontWeight(.light)
                             .foregroundColor(.white)
+                        
+                        Image(artistAlbum.albumImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 55, height: 55)
+                            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                        
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text(artistAlbum.albumName)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
+                            
+                            Label {
+                                HStack {
+                                    Text("\(listeners)k listeners")
+                                        .foregroundColor(.white)
+                                    Spacer()
+                                    Text(artistAlbum.releaseYear ?? "new")
+                                        .kerning(3)
+                                        .padding(.trailing, 5)
+                                        .foregroundColor(.white)
+                                }
+                            } icon: {
+                                Image(systemName: "headphones")
+                                    .foregroundColor(.orange)
+                            }
+                            .foregroundColor(.gray)
+                            .font(.caption)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        Button {
+                            artistAlbum.isLiked.toggle()
+                        } label: {
+                            Image(systemName: artistAlbum.isLiked ? "heart.circle" : "suit.heart")
+                                .font(.title3)
+                                .foregroundColor(artistAlbum.isLiked ? .orange : .white)
+                        }
+                        
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "ellipsis")
+                                .font(.title3)
+                                .foregroundColor(.orange)
+                        }
                     }
+                    .padding(.bottom, 20)
                 }
             }
         }
@@ -167,12 +192,13 @@ struct ArtistHome: View {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text(artistAlbum.albumName)
                                     .fontWeight(.semibold)
+                                    .foregroundColor(.white)
                                 
                                 Label {
                                     Text("\(listeners)k listeners")
                                 } icon: {
                                     Image(systemName: "headphones")
-                                        .foregroundColor(.white)
+                                        .foregroundColor(.orange)
                                 }
                                 .foregroundColor(.gray)
                                 .font(.caption)
@@ -184,7 +210,7 @@ struct ArtistHome: View {
                             } label: {
                                 Image(systemName: artistAlbum.isLiked ? "heart.circle" : "suit.heart")
                                     .font(.title3)
-                                    .foregroundColor(artistAlbum.isLiked ? .green : .white)
+                                    .foregroundColor(artistAlbum.isLiked ? .orange : .white)
                             }
                             
                             Button {
@@ -192,16 +218,24 @@ struct ArtistHome: View {
                             } label: {
                                 Image(systemName: "ellipsis")
                                     .font(.title3)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.orange)
                             }
                         }
                     }
                 }
-            .padding(.bottom)
+                .padding(.vertical, 30)
+                .padding(.horizontal, 10)
+                .background {
+                    Background()
+                        .cornerRadius(15, corners: [.topRight, .topLeft, .bottomLeft])
+                        .opacity(0.2)
+                }
             }, header: {
                 Text(albumYear)
                     .fontWeight(.ultraLight)
                     .kerning(2)
+                    .foregroundColor(.white)
+                    .padding()
             })
         }
     }
@@ -223,12 +257,15 @@ struct ArtistHome: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Text(track.trackName)
                             .fontWeight(.semibold)
+                            .foregroundColor(.white)
                         //might want to put a for each to create sections for each album
                         Text(track.parentAlbumName)
                             .fontWeight(.ultraLight)
+                            .foregroundColor(.white)
                         
                         Label {
-                            Text(track.genre ?? "Generic")
+                            Text("Genre: " + (track.genre ?? "Generic"))
+                                .foregroundColor(.white)
                         } icon: {
                             Image(systemName: "music.note")
                                 .foregroundColor(.white)
@@ -243,7 +280,7 @@ struct ArtistHome: View {
                     } label: {
                         Image(systemName: track.isLiked ? "heart.circle" : "suit.heart")
                             .font(.title3)
-                            .foregroundColor(track.isLiked ? .green : .white)
+                            .foregroundColor(track.isLiked ? .orange : .white)
                     }
                     
                     Button {
@@ -251,7 +288,7 @@ struct ArtistHome: View {
                     } label: {
                         Image(systemName: "ellipsis")
                             .font(.title3)
-                            .foregroundColor(.white)
+                            .foregroundColor(.orange)
                     }
                 }
             }
@@ -277,6 +314,7 @@ struct ArtistHome: View {
                         VStack(alignment: .leading, spacing: 8) {
                             Text(baseAlbum.albumName)
                                 .fontWeight(.semibold)
+                                .foregroundColor(.white)
                             
                             Label {
                                 HStack {
@@ -288,7 +326,7 @@ struct ArtistHome: View {
                                 }
                             } icon: {
                                 Image(systemName: "headphones")
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.orange)
                             }
                             .foregroundColor(.gray)
                             .font(.caption)
@@ -300,7 +338,7 @@ struct ArtistHome: View {
                         } label: {
                             Image(systemName: baseAlbum.isLiked ? "heart.circle" : "suit.heart")
                                 .font(.title3)
-                                .foregroundColor(baseAlbum.isLiked ? .green : .white)
+                                .foregroundColor(baseAlbum.isLiked ? .orange : .white)
                         }
                         
                         Button {
@@ -308,11 +346,19 @@ struct ArtistHome: View {
                         } label: {
                             Image(systemName: "ellipsis")
                                 .font(.title3)
-                                .foregroundColor(.white)
+                                .foregroundColor(.orange)
                         }
+                    }
+                    .padding(.vertical, 35)
+                    .padding(.horizontal, 10)
+                    .background {
+                        Background()
+                            .cornerRadius(15, corners: [.topRight, .topLeft, .bottomRight])
+                            .opacity(0.1)
                     }
                 } header: {
                     Text(baseAlbum.albumArtistName)
+                        .foregroundColor(.BG)
                 }
             }
         }
@@ -334,9 +380,9 @@ struct ArtistHome: View {
             let size = geometry.size
             let height = (size.height + minY) // using this value for height makes the image stretch when pulled down
             
-            Image("unknownsinger") // enum of image names to be added
+            Image(artist?.artistImage ?? "singer") // enum of image names to be added
                 .resizable()
-                .aspectRatio(contentMode: .fill)
+                .aspectRatio(4/3, contentMode: .fill)
                 .frame(width: size.width, height: height > 0 ? height : 0, alignment: .top)
                 .overlay(content: {
                     ZStack(alignment: .bottom) {
@@ -346,19 +392,20 @@ struct ArtistHome: View {
                         VStack(alignment: .leading, spacing: 12) {
                             Text("Artist")
                                 .font(.callout)
-                                .foregroundColor(.gray)
+                                .foregroundColor(.orange)
+                                .shadow(color: .black, radius: 10, x: 2, y: 2)
                             
                             HStack(alignment: .bottom, spacing: 10) {
-                                Text("Didier Thauvin")
+                                Text(artist?.artistName ?? "unknown artist")
                                     .font(.title)
                                     .bold()
+                                    .foregroundColor(.white)
                                 
                                 Image(systemName: "checkmark.seal.fill")
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(.orange)
                                     .background {
                                         Circle()
                                             .fill(.white)
-                                        //.padding(3)
                                     }
                             }
                             
@@ -369,6 +416,7 @@ struct ArtistHome: View {
                             } icon: {
                                 Text("144k")
                                     .fontWeight(.semibold)
+                                    .foregroundColor(.orange)
                             }
                             .font(.caption)
                             
@@ -378,7 +426,10 @@ struct ArtistHome: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 })
-                .cornerRadius(15)
+                .cornerRadius(25)
+                .background {
+                    Color.black
+                }
                 .offset(y: -minY) //makes image adapt its size to content onscreen
         }
         .frame(height: 250)
@@ -405,7 +456,7 @@ struct ArtistHome: View {
                             ZStack {
                                 if currentTab == tabHeader {
                                     RoundedRectangle(cornerRadius: 4, style: .continuous)
-                                        .fill(.white)
+                                        .fill(.orange)
                                         .matchedGeometryEffect(id: "TAB", in: animation)
                                 } else {
                                     RoundedRectangle(cornerRadius: 4, style: .continuous)
@@ -434,6 +485,6 @@ struct ArtistHome: View {
 
 struct ArtistHome_Previews: PreviewProvider {
     static var previews: some View {
-        ArtistPage()
+        ArtistHome(artist: .constant(sampleArtists[1]))
     }
 }

@@ -20,8 +20,8 @@ struct Ring: Identifiable {
 }
 
 var rings: [Ring] = [
-    Ring(progress: 98, value: "Total Minutes", keyIcon: "clock", keyColor: Color.mint, rawData: 27946),
-    Ring(progress: 36, value: "Minutes Today", keyIcon: "hourglass.tophalf.filled", keyColor: Color.purple, rawData: 102),
-    Ring(progress: 98, value: "Total Tracks Played", keyIcon: "rectangle.stack.badge.play.fill", keyColor: Color.blue, rawData: 9147),
-    Ring(progress: 59, value: "Tracks Played Today", keyIcon: "music.quarternote.3", keyColor: Color.yellow, rawData: 34),
+    Ring(progress: 50, value: "Minutes Played Today", keyIcon: "hourglass.tophalf.filled", keyColor: Color.purple, rawData: 202),
+    Ring(progress: 98, value: "Total Minutes Played", keyIcon: "clock", keyColor: Color.mint, rawData: 27946),
+    Ring(progress: 50, value: "Played Today", keyIcon: "music.quarternote.3", keyColor: Color.yellow, rawData: 68),
+    Ring(progress: 98, value: "Total Played", keyIcon: "rectangle.stack.badge.play.fill", keyColor: Color.blue, rawData: 9147),
 ]

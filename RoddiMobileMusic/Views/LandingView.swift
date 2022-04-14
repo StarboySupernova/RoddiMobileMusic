@@ -20,10 +20,13 @@ struct LandingView: View {
         //Tab view with tabs
         TabView(selection: $selectedTab) {
             //Views
-            HomePage()
+            Home()
                 .tag("Home")
-            Playlists()
+            PlaylistView()
                 .tag("My Playlists")
+            HistoryWrappingView()
+                .tag("History")
+            
         }
     }
 }
@@ -31,18 +34,16 @@ struct LandingView: View {
 struct LandingView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .preferredColorScheme(.dark)
     }
 }
 
-//Sub views
+//Sub views - temporary use. To be removed and will call the respective views directly
 struct HomePage: View {
     var body: some View {
         NavigationView {
-            Text("Home")
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .foregroundColor(.primary)
-                .navigationTitle("Home")
+            Home()
+                .navigationTitle("Welcome")
         }
     }
 }
@@ -52,6 +53,15 @@ struct Playlists: View {
         NavigationView {
             PlaylistView()
                 .navigationTitle("My Playlists")
+        }
+    }
+}
+
+struct History: View {
+    var body: some View {
+        NavigationView {
+            HistoryWrappingView()
+                .navigationTitle("History")
         }
     }
 }

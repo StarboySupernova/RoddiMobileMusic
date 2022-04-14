@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HistoryWrappingView: View {
-    @State var showView: Bool = false
+    @State var showView: Bool = true
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: false) {
@@ -19,9 +19,11 @@ struct HistoryWrappingView: View {
         .frame(maxWidth: .infinity)
         .background {
             ZStack {
+                LinearGradient(mycolors: Color.darkStart, Color.BG)
+                
                 VStack {
                     Circle()
-                        .fill(Color.green)
+                        .fill(Color.BG)
                         .scaleEffect(0.6)
                         .offset(x: 20)
                         .blur(radius: 120)

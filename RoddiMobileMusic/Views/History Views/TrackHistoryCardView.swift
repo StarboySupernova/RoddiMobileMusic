@@ -24,29 +24,36 @@ struct TrackHistoryCardView: View {
                 .frame(width: 130, height: 130)
                 
                 VStack(alignment: .leading, spacing: 12) {
-                    ForEach(rings){ ring in
-                        //use getRect solution for iPhone SE
-                        Label {
-                            HStack(alignment: .bottom, spacing: 6) {
-                                Text("\(Int(ring.rawData))")
-                                    .font(.title3)
-                                    .bold()
-                                
-                                Text(ring.value)
-                            }
-                        } icon: {
-                            Group {
-                                if ring.isText {
-                                    Text(ring.keyIcon)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        ForEach(rings){ ring in
+                            //use getRect solution for iPhone SE
+                            Label {
+                                HStack(alignment: .bottom, spacing: 6) {
+                                    Text("\(Int(ring.rawData))")
                                         .font(.title2)
-                                } else {
-                                    Image(systemName: ring.keyIcon)
-                                        .font(.title2)
+                                        .fontWeight(.light)
+                                        .padding(.trailing, 10)
+                                    
+                                    Text(ring.value)
+                                        .font(.callout)
+                                        .fontWeight(.thin)
+                                    
+                                    Spacer()
                                 }
+                            } icon: {
+                                Group {
+                                    if ring.isText {
+                                        Text(ring.keyIcon)
+                                            .font(.title2)
+                                    } else {
+                                        Image(systemName: ring.keyIcon)
+                                            .font(.callout)
+                                    }
+                                }
+                                .frame(width: 30)
                             }
-                            .frame(width: 30)
-                        }
 
+                        }
                     }
                 }
                 .padding(.leading, 10)

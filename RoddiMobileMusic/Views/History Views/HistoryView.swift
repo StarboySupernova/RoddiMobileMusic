@@ -18,6 +18,8 @@ struct HistoryView: View {
     var body: some View {
         VStack(spacing: 20) {
             HStack {
+                Spacer()
+                
                 Text("Current Week")
                     .font(.title)
                     .fontWeight(.bold)
@@ -29,6 +31,7 @@ struct HistoryView: View {
                 } label: {
                     Image(systemName: "ellipsis.circle")
                         .font(.title3)
+                        .foregroundColor(.orange)
                 }
 
             }
@@ -80,7 +83,7 @@ struct HistoryView: View {
                 .offset(y: showViews[3] ? 0 : 250)
             
             //Bar Graph View
-            TotalMinutesGraphView()
+            GraphView()
                 .opacity(showViews[4] ? 1 : 0)
                 .offset(y: showViews[4] ? 0 : 200)
             
